@@ -49,10 +49,11 @@ class TodoView extends StatelessWidget {
               children: [
                 const Text("ADD TODO"),
                 TextFormField(
-                  key: const Key('title'),
+                  key: const Key('title-text-field'),
                   controller: textField,
                 ),
                 ElevatedButton(
+                    key: Key('submit'),
                     onPressed: () {
                       controller.addTodo(Todo(title: textField.text));
                       Navigator.pop(context);
@@ -80,6 +81,7 @@ class TodoView extends StatelessWidget {
       child: Consumer<TodoController>(builder: (context, con, child) {
         return Scaffold(
           floatingActionButton: IconButton(
+              key: Key('add-todo-btn'),
               icon: const Icon(Icons.add),
               onPressed: () => showAddTodoDialog(context)),
           body: Column(
